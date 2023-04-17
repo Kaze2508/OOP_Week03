@@ -11,8 +11,10 @@ private:
 	double x, y;
 	static int count;
 public:
+	LOCATION();
 	~LOCATION();
-	LOCATION(double = 0, double = 0);
+	LOCATION(double);
+	LOCATION(double, double);
 	LOCATION(const LOCATION&);
 	void SetX(double);
 	void SetY(double);
@@ -31,8 +33,8 @@ public:
 	double Peri(const LOCATION&, const LOCATION&) const;
 	double Acre(const LOCATION&, const LOCATION&) const;
 	std::string Categorize(const LOCATION&, const LOCATION&) const;
-	// friend std::istream& operator >>(std::istream& dInput, Location& loc0);
-	// friend std::ostream& operator <<(std::ostream& dOutput, Location loc0);
+	friend std::istream& operator>>(std::istream&, LOCATION&);
+	friend std::ostream& operator<<(std::ostream&, LOCATION&);
 };
 
 class TRIANGLE
@@ -41,11 +43,26 @@ private:
 	LOCATION A, B, C;
 	static int count;
 public:
-	~TRIANGLE();
 	TRIANGLE();
+	~TRIANGLE();
+	TRIANGLE(double, double, double, double, double, double);
 	TRIANGLE(const LOCATION&, const LOCATION&, const LOCATION&);
 	void Input();
 	void Output() const;
 	bool Check() const;
+	LOCATION GetA();
+	LOCATION GetB();
+	LOCATION GetC();
+	void SetA(LOCATION);
+	void SetB(LOCATION);
+	void SetC(LOCATION);
+	void SetABC(LOCATION, LOCATION, LOCATION);
+	static int GetCount();
+	void Move(double, double);
+	double Peri();
+	double Acre();
+	void Categorize();
+	friend std::istream& operator>>(std::istream&, TRIANGLE&);
+	friend std::ostream& operator<<(std::ostream&, TRIANGLE);
 };
 #endif

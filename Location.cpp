@@ -3,12 +3,22 @@
 
 int LOCATION::count = 0;
 
+LOCATION::LOCATION() : x(0), y(0)
+{
+	count++;
+}
+
 LOCATION::~LOCATION()
 {
 	std::cout<<"Destroy 1 location => Remains "<< --count <<" locations\n";
 }
 
 LOCATION::LOCATION(double x, double y): x(x), y(y)
+{
+	count++;
+}
+
+LOCATION::LOCATION(double x) : x(x), y(0)
 {
 	count++;
 }
@@ -130,4 +140,19 @@ std::string LOCATION::Categorize(const LOCATION& d1, const LOCATION& d2) const
 	else
 		result = "Regular Triangle";
 	return result;
+}
+
+std::istream& operator>>(std::istream& is, LOCATION& xy)
+{
+	std::cout << "Input x: ";
+	is >> xy.x;
+	std::cout << "\n";
+	std::cout << "Input y: ";
+	is >> xy.y;
+	return is;
+}
+std::ostream& operator<<(std::ostream& os, LOCATION& xy)
+{
+	os << "(" << xy.GetX() << "," << xy.GetY() << ")";
+	return os;
 }
