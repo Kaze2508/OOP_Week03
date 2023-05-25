@@ -151,7 +151,7 @@ std::istream& operator>>(std::istream& is, LOCATION& xy)
 	is >> xy.y;
 	return is;
 }
-std::ostream& operator<<(std::ostream& os, LOCATION& xy)
+std::ostream& operator<<(std::ostream& os, LOCATION xy)
 {
 	os << "(" << xy.GetX() << "," << xy.GetY() << ")";
 	return os;

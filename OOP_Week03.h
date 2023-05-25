@@ -34,7 +34,7 @@ public:
 	double Acre(const LOCATION&, const LOCATION&) const;
 	std::string Categorize(const LOCATION&, const LOCATION&) const;
 	friend std::istream& operator>>(std::istream&, LOCATION&);
-	friend std::ostream& operator<<(std::ostream&, LOCATION&);
+	friend std::ostream& operator<<(std::ostream&, LOCATION);
 };
 
 class TRIANGLE
@@ -50,19 +50,72 @@ public:
 	void Input();
 	void Output() const;
 	bool Check() const;
-	LOCATION GetA();
-	LOCATION GetB();
-	LOCATION GetC();
+	LOCATION GetA() const;
+	LOCATION GetB() const;
+	LOCATION GetC() const;
 	void SetA(LOCATION);
 	void SetB(LOCATION);
 	void SetC(LOCATION);
 	void SetABC(LOCATION, LOCATION, LOCATION);
 	static int GetCount();
 	void Move(double, double);
-	double Peri();
+	double Peri();\
 	double Acre();
 	void Categorize();
 	friend std::istream& operator>>(std::istream&, TRIANGLE&);
 	friend std::ostream& operator<<(std::ostream&, TRIANGLE);
+};
+
+class RECTANGLE
+{
+private:
+	LOCATION A, B;
+	static int count;
+public:
+	RECTANGLE();
+	~RECTANGLE();
+	RECTANGLE(double, double, double, double);
+	RECTANGLE(LOCATION, LOCATION);
+	LOCATION GetA() const;
+	LOCATION GetB() const;
+	static int GetCount();
+	void SetA(LOCATION);
+	void SetB(LOCATION);
+	void SetAB(LOCATION, LOCATION);
+	void Move(double, double);
+	double Peri();
+	double Acre();
+	void Input();
+	void Output() const;
+	bool Check() const;
+	friend std::istream& operator>>(std::istream&, RECTANGLE&);
+	friend std::ostream& operator<<(std::ostream&, RECTANGLE);
+};
+
+class CIRCLE
+{
+private:
+	LOCATION O;
+	double R;
+	static int count;
+public:
+	CIRCLE();
+	~CIRCLE();
+	CIRCLE(double, double, double);
+	CIRCLE(LOCATION, double);
+	LOCATION GetO() const;
+	double GetR() const;
+	static int GetCount();
+	void SetO(LOCATION);
+	void SetR(double);
+	void SetOR(LOCATION, double);
+	void Move(double, double);
+	double Peri();
+	double Acre();
+	void Input();
+	void Output() const;
+	bool Check() const;
+	friend std::istream& operator>>(std::istream&, CIRCLE&);
+	friend std::ostream& operator<<(std::ostream&, CIRCLE);
 };
 #endif

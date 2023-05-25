@@ -56,17 +56,17 @@ bool TRIANGLE::Check() const
 	return A.CheckTriangle(B, C);
 }
 
-LOCATION TRIANGLE::GetA()
+LOCATION TRIANGLE::GetA() const
 {
 	return A;
 }
 
-LOCATION TRIANGLE::GetB()
+LOCATION TRIANGLE::GetB() const
 {
 	return B;
 }
 
-LOCATION TRIANGLE::GetC()
+LOCATION TRIANGLE::GetC() const
 {
 	return C;
 }
